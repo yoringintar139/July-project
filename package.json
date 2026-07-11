@@ -1,0 +1,21 @@
+{
+  "name": "july-project",
+  "version": "1.0.0",
+  "description": "직업 환경 추천자 MVP",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "career",
+    "recommendation",
+    "job",
+    "survey"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
