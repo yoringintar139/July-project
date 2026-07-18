@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: july-project
+metadata:
+    template: azd-init@1.25.1
+services:
+    july-project:
+        project: .
+        host: containerapp
+        language: js
+        docker:
+            remoteBuild: true
+resources:
+    july-project:
+        type: host.containerapp
+        port: 3000

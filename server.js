@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const { calculateRecommendation } = require("./lib/recommendation");
+const { calculateRecommendation, ANSWER_COUNT } = require("./lib/recommendation");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,9 +11,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.post("/api/recommend", (req, res) => {
   const { answers, preferences } = req.body;
 
-  if (!Array.isArray(answers) || answers.length !== 12) {
+  if (!Array.isArray(answers) || answers.length !== ANSWER_COUNT) {
     return res.status(400).json({
-      message: "answers는 12개 문항의 배열이어야 합니다."
+      message: `answers는 ${ANSWER_COUNT}개 문항의 배열이어야 합니다.`
     });
   }
 

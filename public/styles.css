@@ -360,11 +360,71 @@ select {
   gap: 10px;
 }
 
+.card-list.compact {
+  gap: 8px;
+}
+
 .result-card {
   background: linear-gradient(160deg, #ffffff 0%, #f8faff 100%);
   border: 1px solid #dbe4ff;
   border-radius: 14px;
   padding: 14px;
+}
+
+.compact-card {
+  padding: 12px;
+}
+
+.more-jobs-wrap {
+  margin: 14px 0 18px;
+}
+
+.more-jobs-wrap .btn-secondary {
+  margin-bottom: 10px;
+}
+
+.more-jobs-help {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.more-jobs-empty {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f5f8ff;
+  border: 1px solid #dbe5ff;
+  color: #49608f;
+}
+
+.more-job-details {
+  border: 1px solid #dbe4ff;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.more-job-details + .more-job-details {
+  margin-top: 8px;
+}
+
+.more-job-details summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #31446e;
+  background: #f7faff;
+  border-bottom: 1px solid transparent;
+}
+
+.more-job-details[open] summary {
+  border-bottom-color: #dbe4ff;
+}
+
+.more-job-body {
+  padding: 10px 12px;
 }
 
 .result-card h4 {

@@ -1,17 +1,53 @@
-const QUESTIONS = [
-  "명확한 지시 없이도 스스로 우선순위를 정해 일할 수 있다.",
-  "업무 목표만 주어지면 방법은 자율적으로 결정하는 편이 좋다.",
-  "내가 주도적으로 프로젝트를 이끌 때 성과가 잘 나온다.",
-  "다양한 팀과 잦게 소통하며 일하는 것이 편하다.",
-  "회의나 브레인스토밍에서 아이디어를 나누는 과정이 즐겁다.",
-  "혼자보다 팀 단위로 성과를 내는 환경이 더 잘 맞는다.",
-  "실시간 대화보다 문서/메신저 중심의 비동기 소통이 편하다.",
-  "회의보다 기록된 자료를 기반으로 일할 때 집중이 잘 된다.",
-  "즉답보다 충분히 생각 후 정리해서 소통하는 편이다.",
-  "근무 시간과 장소를 유연하게 조절할 수 있어야 만족도가 높다.",
-  "재택/하이브리드 근무가 가능하면 생산성이 더 높아진다.",
-  "급격한 일정 변경이나 강한 마감 압박이 반복되면 스트레스를 크게 받는다."
-];
+const QUESTION_SETS = {
+  desk: [
+    "명확한 지시 없이도 스스로 우선순위를 정해 일할 수 있다.",
+    "업무 목표만 주어지면 방법은 자율적으로 결정하는 편이 좋다.",
+    "내가 주도적으로 프로젝트를 이끌 때 성과가 잘 나온다.",
+    "새로운 업무를 빠르게 익히고 실행으로 옮기는 편이다.",
+    "긴 문서나 데이터를 읽고 핵심 논점을 빠르게 정리할 수 있다.",
+    "다양한 팀과 잦게 소통하며 일하는 것이 편하다.",
+    "회의나 브레인스토밍에서 아이디어를 나누는 과정이 즐겁다.",
+    "혼자보다 팀 단위로 성과를 내는 환경이 더 잘 맞는다.",
+    "다른 부서와 공동 목표를 맞춰가는 과정이 보람 있다.",
+    "논리적인 근거를 바탕으로 상대를 설득하는 편이다.",
+    "실시간 대화보다 문서/메신저 중심의 비동기 소통이 편하다.",
+    "회의보다 기록된 자료를 기반으로 일할 때 집중이 잘 된다.",
+    "즉답보다 충분히 생각 후 정리해서 소통하는 편이다.",
+    "복잡한 내용을 글이나 자료로 체계적으로 설명하는 편이다.",
+    "세부 기준과 규정을 확인하며 정확하게 처리하는 편이다.",
+    "근무 시간과 장소를 유연하게 조절할 수 있어야 만족도가 높다.",
+    "재택/하이브리드 근무가 가능하면 생산성이 더 높아진다.",
+    "예상치 못한 일정 변경에도 비교적 유연하게 대응한다.",
+    "새로운 도구/프로세스 도입을 빠르게 받아들이는 편이다.",
+    "장시간 앉아서 사고하고 판단하는 업무가 잘 맞는다."
+  ],
+  active: [
+    "예상치 못한 현장 이슈가 생겨도 우선순위를 빠르게 정리할 수 있다.",
+    "외부 이동/대면 일정이 섞여도 업무 흐름을 스스로 관리할 수 있다.",
+    "긴박한 상황에서 내가 먼저 판단해 팀을 움직이는 편이다.",
+    "새로운 장비/도구를 익혀 현장에 바로 적용하는 것이 빠르다.",
+    "몸을 많이 쓰는 일정이 이어져도 집중력을 유지하는 편이다.",
+    "현장에서 여러 사람과 동시에 소통하며 일해도 에너지가 유지된다.",
+    "실시간 협업과 역할 분담이 많은 환경이 오히려 잘 맞는다.",
+    "팀원과 즉시 의견을 맞추며 문제를 푸는 과정이 익숙하다.",
+    "부서/외부 파트너와 연속 조율하는 상황을 부담 없이 처리한다.",
+    "활동량이 많은 날에도 표정과 톤을 안정적으로 유지할 수 있다.",
+    "상황 보고와 공유를 짧고 정확하게 전달하는 데 자신 있다.",
+    "전화/대면 등 즉시 소통 채널을 활용할 때 업무 효율이 높다.",
+    "여러 이해관계자에게 같은 내용을 맥락에 맞춰 설명할 수 있다.",
+    "바쁜 현장에서도 핵심 내용을 빠르게 기록하고 인계할 수 있다.",
+    "운동 루틴이나 체력 관리 계획을 꾸준히 지키는 편이다.",
+    "고정된 자리보다 이동이 있는 근무 형태가 더 맞는다.",
+    "기상/교통 등 외부 변수로 계획이 바뀌어도 빠르게 대처한다.",
+    "교대/변칙 일정에서도 컨디션과 집중도를 비교적 잘 유지한다.",
+    "반복되는 돌발 상황에서도 회복이 빠르고 유연하게 적응한다.",
+    "스포츠/운동 지도처럼 몸으로 시범을 보이며 설명하는 방식이 편하다."
+  ]
+};
+
+function getQuestionsByActivityChoice(choice) {
+  return choice === "active" ? QUESTION_SETS.active : QUESTION_SETS.desk;
+}
 
 const ENVIRONMENT_FIELDS = [
   {
@@ -66,6 +102,17 @@ const ENVIRONMENT_FIELDS = [
       { value: "balanced", label: "균형형" },
       { value: "active", label: "움직임 많음" }
     ]
+  },
+  {
+    name: "environmentTheme",
+    label: "희망 근무 환경",
+    options: [
+      { value: "city", label: "도시" },
+      { value: "coast", label: "바닷가" },
+      { value: "space", label: "우주 관련" },
+      { value: "mountain", label: "산" },
+      { value: "rural", label: "시골" }
+    ]
   }
 ];
 
@@ -98,6 +145,13 @@ const ENVIRONMENT_LABELS = {
     desk: "앉아서 집중",
     balanced: "균형형",
     active: "움직임 많음"
+  },
+  environmentTheme: {
+    city: "도시",
+    coast: "바닷가",
+    space: "우주 관련",
+    mountain: "산",
+    rural: "시골"
   }
 };
 
@@ -110,6 +164,11 @@ const METRIC_LABELS = {
 
 const startBtn = document.getElementById("startBtn");
 const retryBtn = document.getElementById("retryBtn");
+const recommendationTitle = document.getElementById("recommendationTitle");
+const toggleMoreJobsBtn = document.getElementById("toggleMoreJobsBtn");
+const moreJobsSection = document.getElementById("moreJobsSection");
+const moreJobsTitle = document.getElementById("moreJobsTitle");
+const moreJobsList = document.getElementById("moreJobsList");
 const introSection = document.getElementById("introSection");
 const surveySection = document.getElementById("surveySection");
 const resultSection = document.getElementById("resultSection");
@@ -181,6 +240,7 @@ function createSelectField(name, label, options) {
 }
 
 function renderSurvey() {
+  const questions = getQuestionsByActivityChoice(introActivityChoice);
   surveyForm.innerHTML = "";
   const template = document.getElementById("questionTemplate");
 
@@ -205,7 +265,7 @@ function renderSurvey() {
   surveyTitle.textContent = "2단계. 성향 진단 문항";
   surveyForm.appendChild(surveyTitle);
 
-  QUESTIONS.forEach((question, index) => {
+  questions.forEach((question, index) => {
     const fragment = template.content.cloneNode(true);
     const card = fragment.querySelector(".question-card");
     card.querySelector(".question-text").textContent = `${index + 1}. ${question}`;
@@ -228,14 +288,16 @@ function renderSurvey() {
 }
 
 function updateProgress() {
+  const questions = getQuestionsByActivityChoice(introActivityChoice);
   const selected = surveyForm.querySelectorAll("input[type='radio']:checked").length;
-  const ratio = (selected / QUESTIONS.length) * 100;
+  const ratio = (selected / questions.length) * 100;
   progressBar.style.width = `${Math.min(100, ratio)}%`;
 }
 
 function readAnswers() {
+  const questions = getQuestionsByActivityChoice(introActivityChoice);
   const answers = [];
-  for (let index = 0; index < QUESTIONS.length; index += 1) {
+  for (let index = 0; index < questions.length; index += 1) {
     const selected = surveyForm.querySelector(`input[name='q-${index}']:checked`);
     answers.push(Number(selected.value));
   }
@@ -249,15 +311,23 @@ function readPreferences() {
     communicationStyle: surveyForm.communicationStyle.value,
     workTime: surveyForm.workTime.value,
     culture: surveyForm.culture.value,
-    activityLevel: surveyForm.activityLevel.value
+    activityLevel: surveyForm.activityLevel.value,
+    environmentTheme: surveyForm.environmentTheme.value
   };
 }
 
 function renderResult(data) {
+  if (recommendationTitle) {
+    recommendationTitle.textContent = introActivityChoice === "active" ? "운동 관련 직업 추천 TOP 5" : "두뇌 중심 직업 추천 TOP 5";
+  }
+  if (moreJobsTitle) {
+    moreJobsTitle.textContent = introActivityChoice === "active" ? "TOP 5 외 운동/현장 직업" : "TOP 5 외 생각/머리 중심 직업";
+  }
+
   document.getElementById("profileSummary").textContent = `업무 환경 프로필: ${data.profile.summary}`;
   const selectedEnv = document.getElementById("selectedEnv");
   const env = readPreferences();
-  selectedEnv.textContent = `선택 환경: ${ENVIRONMENT_LABELS.workType[env.workType]} / ${ENVIRONMENT_LABELS.collaborationStyle[env.collaborationStyle]} / ${ENVIRONMENT_LABELS.communicationStyle[env.communicationStyle]} / ${ENVIRONMENT_LABELS.workTime[env.workTime]} / ${ENVIRONMENT_LABELS.culture[env.culture]} / ${ENVIRONMENT_LABELS.activityLevel[env.activityLevel]}`;
+  selectedEnv.textContent = `선택 환경: ${ENVIRONMENT_LABELS.workType[env.workType]} / ${ENVIRONMENT_LABELS.collaborationStyle[env.collaborationStyle]} / ${ENVIRONMENT_LABELS.communicationStyle[env.communicationStyle]} / ${ENVIRONMENT_LABELS.workTime[env.workTime]} / ${ENVIRONMENT_LABELS.culture[env.culture]} / ${ENVIRONMENT_LABELS.activityLevel[env.activityLevel]} / ${ENVIRONMENT_LABELS.environmentTheme[env.environmentTheme]}`;
 
   const scoreGrid = document.getElementById("scoreGrid");
   scoreGrid.innerHTML = "";
@@ -291,7 +361,8 @@ function renderResult(data) {
       communicationStyle: "정보 준비 중",
       workTime: "정보 준비 중",
       culture: "정보 준비 중",
-      activityLevel: "정보 준비 중"
+      activityLevel: "정보 준비 중",
+      environmentTheme: "정보 준비 중"
     };
 
     const taskItems = keyTasks.map((value) => `<li>${value}</li>`).join("");
@@ -304,7 +375,7 @@ function renderResult(data) {
       <h4>잘 맞는 순위 ${idx + 1}위. ${item.name}</h4>
       <p>${item.reason}</p>
       <p class="job-description">${item.description}</p>
-      <p class="fit-env"><strong>잘 맞는 환경:</strong> ${fitEnvironment.workType} / ${fitEnvironment.collaborationStyle} / ${fitEnvironment.communicationStyle} / ${fitEnvironment.workTime} / ${fitEnvironment.culture} / ${fitEnvironment.activityLevel}</p>
+      <p class="fit-env"><strong>잘 맞는 환경:</strong> ${fitEnvironment.workType} / ${fitEnvironment.collaborationStyle} / ${fitEnvironment.communicationStyle} / ${fitEnvironment.workTime} / ${fitEnvironment.culture} / ${fitEnvironment.activityLevel} / ${fitEnvironment.environmentTheme}</p>
       <div class="detail-grid">
         <section>
           <h5>주요 업무</h5>
@@ -328,6 +399,58 @@ function renderResult(data) {
     `;
     recommendationList.appendChild(card);
   });
+
+  if (moreJobsList) {
+    moreJobsList.innerHTML = "";
+    const otherRecommendations = Array.isArray(data.otherRecommendations) ? data.otherRecommendations : [];
+
+    if (otherRecommendations.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "more-jobs-empty";
+      empty.textContent = "현재 조건에서는 추가로 보여줄 추천 직업이 없습니다.";
+      moreJobsList.appendChild(empty);
+    } else {
+      otherRecommendations.forEach((item, idx) => {
+        const details = document.createElement("details");
+        details.className = "more-job-details";
+
+        const keyTasks = Array.isArray(item.keyTasks) ? item.keyTasks : [];
+        const requiredSkills = Array.isArray(item.requiredSkills) ? item.requiredSkills : [];
+        const prepChecklist = Array.isArray(item.prepChecklist) ? item.prepChecklist : [];
+
+        const taskItems = keyTasks.map((value) => `<li>${value}</li>`).join("");
+        const skillBadges = requiredSkills.map((value) => `<span class="tag">${value}</span>`).join("");
+        const checklistItems = prepChecklist.map((value) => `<li>${value}</li>`).join("");
+
+        details.innerHTML = `
+          <summary>추가 추천 ${idx + 1}. ${item.name}</summary>
+          <div class="more-job-body">
+            <p>${item.reason}</p>
+            <p class="job-description">${item.description}</p>
+            <div class="detail-grid">
+              <section>
+                <h5>주요 업무</h5>
+                <ul>${taskItems}</ul>
+              </section>
+              <section>
+                <h5>필요 역량</h5>
+                <div class="tag-wrap">${skillBadges}</div>
+                <h5>지원 준비 체크리스트</h5>
+                <ul>${checklistItems}</ul>
+              </section>
+            </div>
+          </div>
+        `;
+
+        moreJobsList.appendChild(details);
+      });
+    }
+  }
+
+  if (moreJobsSection && toggleMoreJobsBtn) {
+    moreJobsSection.classList.add("hidden");
+    toggleMoreJobsBtn.textContent = "다른 직업 자세히 보기";
+  }
 
   const avoidList = document.getElementById("avoidList");
   avoidList.innerHTML = "";
@@ -364,6 +487,7 @@ async function handleSubmit(event) {
 }
 
 startBtn.addEventListener("click", () => {
+  renderSurvey();
   if (surveyForm.activityLevel) {
     surveyForm.activityLevel.value = introActivityChoice;
   }
@@ -381,6 +505,14 @@ retryBtn.addEventListener("click", () => {
   resultSection.classList.add("hidden");
   introSection.classList.remove("hidden");
 });
+
+if (toggleMoreJobsBtn && moreJobsSection) {
+  toggleMoreJobsBtn.addEventListener("click", () => {
+    const isHidden = moreJobsSection.classList.contains("hidden");
+    moreJobsSection.classList.toggle("hidden", !isHidden);
+    toggleMoreJobsBtn.textContent = isHidden ? "자세히 보기 닫기" : "다른 직업 자세히 보기";
+  });
+}
 
 surveyForm.addEventListener("submit", handleSubmit);
 
